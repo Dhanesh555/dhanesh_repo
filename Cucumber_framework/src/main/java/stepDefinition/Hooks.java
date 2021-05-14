@@ -12,7 +12,7 @@ import supportMethods.FileRead;
 
 public class Hooks {
 
-	public static WebDriver driver;
+	private static WebDriver driver;
 	private static String browser;
 	
 	@Before

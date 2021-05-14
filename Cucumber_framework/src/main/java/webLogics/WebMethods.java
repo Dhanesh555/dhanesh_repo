@@ -6,5 +6,5 @@ import stepDefinition.Hooks;
 
 public class WebMethods {
 
-	WebDriver driver = Hooks.driver;
+	WebDriver driver = Hooks.getCurrentDriver();
 }
