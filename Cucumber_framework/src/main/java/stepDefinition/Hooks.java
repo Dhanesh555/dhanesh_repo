@@ -4,11 +4,14 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import cucumber.api.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import supportMethods.BrowserFactory;
 import supportMethods.FileRead;
+import supportMethods.GeneralPurpose;
+import testRunner.TestRunner;
 
 public class Hooks {
 
@@ -16,20 +19,23 @@ public class Hooks {
 	private static String browser;
 	
 	@Before
-	public void executeBeforeScenario() throws FileNotFoundException, IOException {
+	public void executeBeforeScenario(Scenario scenario) throws FileNotFoundException, IOException {
 		
+		TestRunner.scenario = scenario;
 		browser = FileRead.readProperties().get("chrome");
 		driver = BrowserFactory.selectBrowser(browser);
 		System.out.println(browser+" launched sucessfully....");
 	}
 	
 	@AfterStep
-	public void takeScreenshot() {
-		
+	public void takeScreenshot() throws IOException {
+	
+		String fileName = GeneralPurpose.getCurrentScenario()+"_"+GeneralPurpose.getCurrentTime();
+		GeneralPurpose.takeScreenShot(fileName);
 	}
 	
 	@After
-	public void executeAfterScenario() {
+	public void executeAfterScenario() throws IOException {
 		
 		driver.quit();
 		System.out.println(browser+" closed sucessfully....");

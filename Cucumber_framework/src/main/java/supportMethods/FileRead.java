@@ -31,4 +31,11 @@ public class FileRead {
 
 		return properties;
 	}
+	
+	public static String getReportConfigPath() throws IOException{
+		Properties prop = new Properties();
+		prop.load(readFile("src/test/resources/config.properties"));
+		String reportConfigPath = System.getProperty("user.dir") + prop.getProperty("reportConfigPath");
+		return reportConfigPath; 
+	}
 }
