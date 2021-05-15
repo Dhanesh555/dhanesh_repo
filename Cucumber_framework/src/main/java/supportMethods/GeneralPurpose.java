@@ -17,29 +17,30 @@ import testRunner.TestRunner;
 public class GeneralPurpose {
 
 	private static WebDriver driver = Hooks.getCurrentDriver();
-	
+
 	public static String todaysDate() {
 
 		DateFormat dateFormat = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 		Date date = new Date();
 		return dateFormat.format(date);
 	}
-	
+
 	public static String getCurrentTime() {
-		
+
 		Calendar calander = Calendar.getInstance();
 		Date time = calander.getTime();
 		return time.toString();
 	}
-	
+
+
 	public static String getCurrentScenario() {
-		
-		return TestRunner.scenario.getName();
+
+		return TestRunner.scenario.getName(); 
 	}
-	
+
 	public static String getScenarioResult() {
-		
-		return TestRunner.scenario.getStatus();
+
+		return TestRunner.scenario.getStatus(); 
 	}
 
 	public static String takeScreenShot(String filename) throws IOException {
@@ -51,7 +52,7 @@ public class GeneralPurpose {
 			File newFile = new File(filePath);
 			Files.copy(file, newFile);
 			return filePath;
-			
+
 		} catch (WebDriverException somePlatformsDontSupportScreenshots) {
 			System.err.println(somePlatformsDontSupportScreenshots.getMessage()); 
 			return null; 

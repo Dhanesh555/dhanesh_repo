@@ -17,32 +17,35 @@ public class Hooks {
 
 	private static WebDriver driver;
 	private static String browser;
-	
-	@Before
-	public void executeBeforeScenario(Scenario scenario) throws FileNotFoundException, IOException {
-		
-		TestRunner.scenario = scenario;
-		browser = FileRead.readProperties().get("chrome");
+
+
+	@Before 
+	public void executeBeforeScenario(Scenario scenario) throws
+	FileNotFoundException, IOException {
+
+		TestRunner.scenario = scenario; 
+		browser = FileRead.readProperties().get("chrome"); 
 		driver = BrowserFactory.selectBrowser(browser);
-		System.out.println(browser+" launched sucessfully....");
+		System.out.println(browser+" launched sucessfully...."); 
 	}
-	
+
+
 	@AfterStep
 	public void takeScreenshot() throws IOException {
-	
+
 		String fileName = GeneralPurpose.getCurrentScenario()+"_"+GeneralPurpose.getCurrentTime();
 		GeneralPurpose.takeScreenShot(fileName);
 	}
-	
-	@After
+
+	@After()
 	public void executeAfterScenario() throws IOException {
-		
+
 		driver.quit();
 		System.out.println(browser+" closed sucessfully....");
 	}
-	
+
 	public static WebDriver getCurrentDriver() {
-		
+
 		if (driver != null) 
 			return driver;
 		else
