@@ -5,9 +5,8 @@ import java.io.IOException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import cucumber.api.Scenario;
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import supportMethods.BrowserFactory;
 import supportMethods.FileRead;
 import supportMethods.GeneralPurpose;
@@ -19,7 +18,7 @@ public class Hooks {
 	private static String browser;
 
 
-	@Before 
+	@Before
 	public void executeBeforeScenario(Scenario scenario) throws
 	FileNotFoundException, IOException {
 
@@ -30,7 +29,7 @@ public class Hooks {
 	}
 
 
-	@AfterStep
+	@After
 	public void takeScreenshot() throws IOException {
 
 		String fileName = GeneralPurpose.getCurrentScenario()+"_"+GeneralPurpose.getCurrentTime();

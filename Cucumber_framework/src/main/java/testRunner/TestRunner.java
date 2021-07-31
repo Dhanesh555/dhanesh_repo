@@ -11,9 +11,9 @@ import com.cucumber.listener.Reporter;
 
 @RunWith(Cucumber.class)
 @CucumberOptions( 
-		features = {"src\\test\\resources\\featureFiles\\sample.feature"}, 
+		features = {"/Users/dhaneshm/git/dhanesh/Cucumber_framework/src/test/resources/featureFiles/amazon.feature"}, 
 		glue = { "stepDefinition" }, 
-		tags = { "~@ignore"}, 
+		tags = { "@test"}, 
 		plugin = {"pretty", "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }, 
 		monochrome = true, 
 		dryRun = false)

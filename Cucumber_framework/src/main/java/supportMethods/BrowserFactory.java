@@ -30,7 +30,7 @@ public class BrowserFactory {
 
 	private static WebDriver launchChromeBrowser() {
 
-		System.setProperty("webdriver.chrome.driver", ".//drivers//chromeDriver//chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", ".//drivers//chromeDriver//chromedriver");
 		ChromeOptions option = new ChromeOptions();
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default_content_settings.popups", 0);
